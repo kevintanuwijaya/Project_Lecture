@@ -14,5 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories = Http::get("https://bilocker.000webhostapp.com/BiLocker/GetItemCategories.php");
+    dd(json_decode($categories));
 });
