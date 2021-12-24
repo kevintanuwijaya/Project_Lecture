@@ -25,6 +25,10 @@ class AuthController extends Controller
         ]);
 
         $result = json_decode($response);
+
+        if($result == null){
+            return back()->with('loginError','Email or Password does not match');
+        }
         $cookie = Cookie::queue('remember',$result->UserEmail,300);
         
         return redirect('\home');
