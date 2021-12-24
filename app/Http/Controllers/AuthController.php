@@ -31,7 +31,7 @@ class AuthController extends Controller
         }
         $cookie = Cookie::queue('remember',$result->UserEmail,300);
         
-        return redirect('\home');
+        return redirect('/home');
     }
 
     /**
@@ -58,6 +58,6 @@ class AuthController extends Controller
         if($result == 'Failed'){
             return back()->with('erorrRegister','Email Invalid');
         }
-        return redirect('\login');
+        return redirect('/login');
     }
 }

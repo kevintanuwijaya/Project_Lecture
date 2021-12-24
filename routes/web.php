@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     // $categories = Http::get("https://bilocker.000webhostapp.com/BiLocker/GetItemCategories.php");
     // dd(json_decode($categories));
     return view('layouts.home');
