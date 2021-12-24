@@ -12,13 +12,13 @@
         <!-- https://startbootstrap.com/solution/contact-forms-->
         <!-- to get an API token!-->
         
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN" method="POST" action="/login">
+            @csrf
             <h1>LOGIN</h1>
 
             <!-- Email address input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="email" type="email" placeholder="name@example.com"
+                <input class="form-control" id="email" type="email" placeholder="name@example.com" name="email"
                     data-sb-validations="required,email" />
                 <label for="email">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
@@ -27,14 +27,14 @@
 
             <!-- Password input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="password" type="password" placeholder="password..."
+                <input class="form-control" id="password" type="password" placeholder="password..." name="password"
                     data-sb-validations="required" />
                 <label for="password">Password</label>
                 <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
                 <div class="invalid-feedback" data-sb-feedback="email:email">Password is wrong.</div>
             </div>
             <!-- Submit Button-->
-            <button class="btn btn-primary btn-xl disabled" id="loginButton" type="submit">Login</button>
+            <button class="btn btn-primary btn-xl" id="loginButton" type="submit">Login</button>
         </form>
     </div>
 </div>

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -20,3 +22,11 @@ Route::get('/', function () {
     // dd(json_decode($categories));
     return view('layouts.home');
 });
+
+Route::get('/login',[MainController::class,'loginPage']);
+
+Route::post('/login',[AuthController::class,'login']);
+
+Route::get('/register',[MainController::class,'registerPage']);
+
+Route::post('regitser',[AuthController::class,'register']);
