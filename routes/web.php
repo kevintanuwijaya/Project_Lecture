@@ -29,4 +29,4 @@ Route::post('/login',[AuthController::class,'login']);
 
 Route::get('/register',[MainController::class,'registerPage']);
 
-Route::post('regitser',[AuthController::class,'register']);
+Route::post('/regitser',[AuthController::class,'register']);
