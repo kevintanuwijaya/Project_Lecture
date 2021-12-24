@@ -13,6 +13,8 @@
         <!-- to get an API token!-->
         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
 
+            <h1>REGISTER</h1>
+
             <!-- Name input-->
             <div class="form-floating mb-3">
                 <input class="form-control" id="name" type="text" placeholder="Enter your name..."
