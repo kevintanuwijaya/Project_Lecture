@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -30,3 +31,5 @@ Route::post('/login',[AuthController::class,'login']);
 Route::get('/register',[MainController::class,'registerPage']);
 
 Route::post('/regitser',[AuthController::class,'register']);
+
+Route::post('/edit',[UserController::class,'edit']);
