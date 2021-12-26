@@ -18,18 +18,16 @@ use Illuminate\Support\Facades\Http;
 |
 */
 
-Route::get('/home', function () {
-    // $categories = Http::get("https://bilocker.000webhostapp.com/BiLocker/GetItemCategories.php");
-    // dd(json_decode($categories));
-    return view('layouts.home');
-});
+Route::get('/home', [MainController::class,'homePage']);
 
 Route::get('/login',[MainController::class,'loginPage']);
 
 Route::post('/login',[AuthController::class,'login']);
 
+Route::get('/logout',[AuthController::class,'logout']);
+
 Route::get('/register',[MainController::class,'registerPage']);
 
-Route::post('/regitser',[AuthController::class,'register']);
+Route::post('/register',[AuthController::class,'register']);
 
 Route::post('/edit',[UserController::class,'edit']);

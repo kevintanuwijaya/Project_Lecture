@@ -11,13 +11,13 @@
         <!-- To make this form functional, sign up at-->
         <!-- https://startbootstrap.com/solution/contact-forms-->
         <!-- to get an API token!-->
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/register" method="POST">
+            @csrf
             <h1>REGISTER</h1>
 
             <!-- Name input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="name" type="text" placeholder="Enter your name..."
+                <input class="form-control" id="name" type="text" placeholder="Enter your name..." name="name" value="{{old('name')}}"
                     data-sb-validations="required" />
                 <label for="name">Name</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
@@ -25,7 +25,7 @@
 
             <!-- Email address input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="email" type="email" placeholder="name@example.com"
+                <input class="form-control" id="email" type="email" placeholder="name@example.com" name="email" value="{{old('email')}}"
                     data-sb-validations="required,email" />
                 <label for="email">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
@@ -34,40 +34,31 @@
 
             <!-- Email address input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="confirmEmail" type="email" placeholder="name@example.com"
+                <input class="form-control" id="confirmed_email" type="email" placeholder="name@example.com" name="confirmed_email" value="{{old('confirmed_email')}}"
                     data-sb-validations="required,email" />
                 <label for="email">Confirm Email address</label>
-                <div class="invalid-feedback" data-sb-feedback="confirmEmail:required">A confirm email is required.</div>
-                <div class="invalid-feedback" data-sb-feedback="email:email">Confirm Email is not the same.</div>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_email:required">A confirm email is required.</div>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_email:email">Email is not valid.</div>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_email:same:email">Confirm Email does not the same</div>
             </div>
 
             <!-- Password input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="password" type="password" placeholder="password..."
+                <input class="form-control" id="password" type="password" placeholder="password..." name="password" value="{{old('password')}}"
                     data-sb-validations="required" />
                 <label for="password">Password</label>
                 <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
-                <div class="invalid-feedback" data-sb-feedback="email:email">Password is wrong.</div>
             </div>
 
-            {{-- <!-- Phone number input-->
+            <!-- Password input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
+                <input class="form-control" id="confirmed_password" type="password" placeholder="confirm password..." name="confirmed_password" value="{{old('confirmed_password')}}"
                     data-sb-validations="required" />
-                <label for="phone">Phone number</label>
-                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
-                </div>
-            </div> --}}
+                <label for="password">Confirm Password</label>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_password:required">Password is required.</div>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_password:same:password">Confirm Password is not the same.</div>
+            </div>
 
-            <!-- Message input-->
-            {{-- <div class="form-floating mb-3">
-                <textarea class="form-control" id="message" type="text"
-                    placeholder="Enter your message here..." style="height: 10rem"
-                    data-sb-validations="required"></textarea>
-                <label for="message">Message</label>
-                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
-                </div>
-            </div> --}}
 
             <!-- Submit success message-->
             <!---->
@@ -87,12 +78,16 @@
             <!---->
             <!-- This is what your users will see when there is-->
             <!-- an error submitting the form-->
-            <div class="d-none" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3">Error sending message!</div>
+            <div class="" id="submitErrorMessage">
+                @if ($errors->any())
+                        @foreach ($errors->all() as $err )
+                            <div class="text-center text-danger mb-3">{{ $err }}</div>
+                        @endforeach
+                @endif
             </div>
 
             <!-- Submit Button-->
-            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Register</button>
+            <button class="btn btn-primary btn-xl" id="registerButton" type="submit">Register</button>
         </form>
     </div>
 </div>

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -27,9 +28,11 @@ class AuthController extends Controller
         $result = json_decode($response);
 
         if($result == null){
-            return back()->with('loginError','Email or Password does not match');
+            return back()->withErrors(['errorLogin' => 'Email or Password invalid']);
         }
-        $cookie = Cookie::queue('remember',$result->UserEmail,300);
+
+        Cookie::queue('remember',$result->UserEmail,300);
+        Session::put('remember',$result->UserEmail);
         
         return redirect('/home');
     }
@@ -56,8 +59,19 @@ class AuthController extends Controller
         $result = htmlentities($response);
 
         if($result == 'Failed'){
-            return back()->with('erorrRegister','Email Invalid');
+            return back()->withErrors(['errorRegister' => 'Email already taken']);
         }
         return redirect('/login');
+    }
+
+    /**
+     * logout the current user
+     */
+    public function logout()
+    {
+        Cookie::queue(Cookie::forget('remember'));
+        Session::forget('remember');
+
+        return redirect('/home');
     }
 }

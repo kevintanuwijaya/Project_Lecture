@@ -18,7 +18,7 @@
 
             <!-- Email address input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="email" type="email" placeholder="name@example.com" name="email"
+                <input class="form-control" id="email" type="email" placeholder="name@example.com" name="email" value="{{old('email')}}"
                     data-sb-validations="required,email" />
                 <label for="email">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
@@ -27,12 +27,24 @@
 
             <!-- Password input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="password" type="password" placeholder="password..." name="password"
+                <input class="form-control" id="password" type="password" placeholder="password..." name="password" value="{{old('password')}}"
                     data-sb-validations="required" />
                 <label for="password">Password</label>
                 <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
-                <div class="invalid-feedback" data-sb-feedback="email:email">Password is wrong.</div>
             </div>
+            
+            <!-- Submit error message-->
+            <!---->
+            <!-- This is what your users will see when there is-->
+            <!-- an error submitting the form-->
+            <div class="" id="submitErrorMessage">
+                @if ($errors->any())
+                        @foreach ($errors->all() as $err )
+                            <div class="text-center text-danger mb-3">{{ $err }}</div>
+                        @endforeach
+                @endif
+            </div>
+
             <!-- Submit Button-->
             <button class="btn btn-primary btn-xl" id="loginButton" type="submit">Login</button>
         </form>
