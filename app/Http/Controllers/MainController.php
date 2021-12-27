@@ -13,22 +13,23 @@ class MainController extends Controller
     /**
      * show home page
      */
-    public function homePage(){
-        
+    public function homePage()
+    {
+
         $user = null;
-        
-        if(Cookie::get('remember') || Session::get('remember')){
+
+        if (Cookie::get('remember') || Session::get('remember')) {
 
             $response = null;
 
-            if(Cookie::get('remember')){
+            if (Cookie::get('remember')) {
                 $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/GetUser.php', [
                     'email' => Cookie::get('remember'),
                 ]);
-            }else{
+            } else {
                 $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/GetUser.php', [
                     'email' => Session::get('remember'),
-                ]); 
+                ]);
             }
 
             // dd(json_decode($response));
@@ -42,34 +43,36 @@ class MainController extends Controller
             $user->balance = $result->UserBalance;
         }
 
-        return view('layouts.home',['user' => $user]);
-
+        return view('layouts.home', ['user' => $user]);
     }
 
     /**
      * show login page
      */
-    public function loginPage(){
+    public function loginPage()
+    {
 
-        if(Cookie::get('remember') || Session::get('remember')){
+        if (Cookie::get('remember') || Session::get('remember')) {
             return back();
         }
 
-        return view('login');
+        return view('login', [
+            'user' => null,
+        ]);
     }
 
     /**
      * show register page
      */
-    public function registerPage(){
+    public function registerPage()
+    {
 
-        if(Cookie::get('remember') || Session::get('remember')){
+        if (Cookie::get('remember') || Session::get('remember')) {
             return back();
         }
 
-        return view('register');
+        return view('register', [
+            'user' => null,
+        ]);
     }
-
-    
-
 }
