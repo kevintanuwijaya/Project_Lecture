@@ -20,11 +20,20 @@ class TopupController extends Controller
 
         $result = htmlentities($response);
 
-        // if($result == 'Voucher Code'){
-        //     return back()->withErrors(['errorVoucher' => 'Tidak bisa di Redeem']);
-        // }
-    
-        return redirect('/home');
+        if($result == 'Voucher Code Invalid'){
+           
+            // echo "<script type='text/javascript'>alert('Voucher Code Have Been Used Before');  location.reload();</script>";
+            echo "<script language='javascript'>";
+        echo 'alert("Voucher Code Have Already Been Used");';
+        echo 'window.location.replace("home");';
+        echo "</script>";
+        }
+        // echo "<script type='text/javascript'>alert('Redeem Success');  location.reload(); </script>";
+        echo "<script language='javascript'>";
+        echo 'alert("Redeem Success");';
+        echo 'window.location.replace("home");';
+        echo "</script>";
+        
     }
 
     

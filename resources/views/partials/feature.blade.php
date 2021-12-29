@@ -9,21 +9,23 @@
         </div>
         <!-- Features Grid Items-->
         <div class="row justify-content-center">
-            <!-- Feature Item 1-->
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="feature-item mx-auto" data-bs-toggle="modal" data-bs-target="#featureModal1">
-                    <div class="feature-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="feature-item-caption-content text-center text-white">
-                            <img class="img-fluid" style="height: 5em; width: 5em"
-                                src="https://cdn.discordapp.com/attachments/895156326865444904/923837534918823956/topUp.png"
-                                alt="..." />
+           @if($user)
+                <!-- Feature Item 1-->
+                <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="feature-item mx-auto" data-bs-toggle="modal" data-bs-target="#featureModal1">
+                        <div class="feature-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                            <div class="feature-item-caption-content text-center text-white">
+                                <img class="img-fluid" style="height: 5em; width: 5em"
+                                    src="https://cdn.discordapp.com/attachments/895156326865444904/923837534918823956/topUp.png"
+                                    alt="..." />
+                            </div>
                         </div>
+                        <img class="img-fluid"
+                            src="https://cdn.discordapp.com/attachments/895156326865444904/923843155688824862/topUp.png"
+                            alt="..." />
                     </div>
-                    <img class="img-fluid"
-                        src="https://cdn.discordapp.com/attachments/895156326865444904/923843155688824862/topUp.png"
-                        alt="..." />
                 </div>
-            </div>
+           @endif
             <!-- feature Item 2-->
             <div class="col-md-6 col-lg-4 mb-5">
                 <div class="feature-item mx-auto" data-bs-toggle="modal" data-bs-target="#featureModal2">
@@ -59,6 +61,7 @@
 
 <!-- Features Modals-->
 <!-- Feature Modal 1-->
+@if ($user)
 <div class="feature-modal modal fade" id="featureModal1" tabindex="-1" aria-labelledby="featureModal1"
     aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -93,6 +96,19 @@
                                     <i class="fas fa-plus fa-fw"></i>
                                     Top Up
                                 </button>
+                                {{-- @if(session()->has('success'))
+                                    <div class="alert alert-success" style="margin-top: 1em" role="alert">
+                                        Redeem Success
+                                    </div>
+                                @endif
+                                @if(session()->has('error'))
+                                    <div class="alert alert-danger" role="alert">
+                                        Redeem Failed
+                                    </div>
+                                @endif
+                                     --}}
+                        
+                                
                             </form>
                         </div>
                     </div>
@@ -101,6 +117,7 @@
         </div>
     </div>
 </div>
+@endif
 <!-- feature Modal 2-->
 <div class="feature-modal modal fade" id="featureModal2" tabindex="-1" aria-labelledby="featureModal2"
     aria-hidden="true">
