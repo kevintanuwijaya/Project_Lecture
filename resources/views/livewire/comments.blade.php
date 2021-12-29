@@ -8,7 +8,7 @@
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
-        @if (Cookie::get('remember'))
+        @if (Cookie::get('remember') || Session::get('remember'))
             <div wire:click="refresh" class="row justify-content-center mx-2">
                 <div class="card m-2 p-2">
                     <form action="/comment" method="post">
