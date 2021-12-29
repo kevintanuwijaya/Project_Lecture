@@ -183,21 +183,71 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <!-- feature Modal - Title-->
-                            <h2 class="feature-modal-title text-secondary text-uppercase mb-0">Circus Tent</h2>
+                            <h2 class="feature-modal-title text-secondary text-uppercase mb-0">My Transaction History
+                            </h2>
                             <!-- Icon Divider-->
                             <div class="divider-custom">
                                 <div class="divider-custom-line"></div>
                                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                 <div class="divider-custom-line"></div>
                             </div>
-                            <!-- feature Modal - Image-->
-                            <img class="img-fluid rounded mb-5" src="assets/img/feature/circus.png" alt="..." />
-                            <!-- feature Modal - Text-->
-                            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis
-                                inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod
-                                consequuntur itaque. Nam.</p>
-                            <button class="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                            @if ($histories)
+                                <table class="table align-middle">
+                                    @foreach ($histories as $history)
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-start">
+                                                    Locker ID
+                                                </td>
+                                                <td class="text-start">
+                                                    {{ $history->LockerID }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">
+                                                    Locker Name
+                                                </td>
+                                                <td class="text-start">{{ $history->LockerName }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">
+                                                    Start Time
+                                                </td>
+                                                <td class="text-start">
+                                                    {{ $history->TransactionStart }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">
+                                                    End Time
+                                                </td>
+                                                <td class="text-start">
+                                                    {{ $history->TransactionEnd }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">
+                                                    Locker Location
+                                                </td>
+                                                <td class="text-start">
+                                                    {{ $history->LockerLocation }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">
+                                                    Transaction Price
+                                                </td>
+                                                <td class="text-start">
+                                                    IDR {{ number_format($history->TransactionPrice, 2) }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    @endforeach
+                                </table>
+                            @else
+                                <h2>No Active Transaction</h2>
+                            @endif
+                            <button class="btn btn-primary" href="#" data-bs-dismiss="modal">
                                 <i class="fas fa-times fa-fw"></i>
                                 Close Window
                             </button>

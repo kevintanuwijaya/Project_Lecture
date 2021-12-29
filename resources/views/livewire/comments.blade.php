@@ -8,6 +8,27 @@
             <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
             <div class="divider-custom-line"></div>
         </div>
+        @if (Cookie::get('remember'))
+            <div wire:click="refresh" class="row justify-content-center mx-2">
+                <div class="card m-2 p-2">
+                    <form action="/comment" method="post">
+                        @csrf
+                        <div class="card form-floating mb-1">
+                            <textarea class="form-control" name="body" placeholder="Leave a comment here"
+                                id="floatingTextarea2" style="height: 100px"></textarea>
+                            <label for="floatingTextarea2">Comments</label>
+                        </div>
+                        <label for="rating" class="form-label text-white">Rating</label>
+                        <input type="range" class="form-range" name="rating" min="0" max="5" step="0.01" id="rating"
+                            value="2.5">
+                        <input type="hidden" name="email" value="{{ Cookie::get('remember') }}">
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-warning">Add comment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        @endcan
         <div class="row justify-content-center mx-2">
             @foreach ($comments as $comment)
                 <div class="card mb-2">
