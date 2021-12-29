@@ -11,7 +11,6 @@ class UserController extends Controller
     public function edit(Request $request){
         $validator = $request->validate([
             'name' => 'required',
-            'old_password' => 'required',
             'new_password' => 'required',
             'confirm_new_passowrd' => 'required|same:new_password',
             'phone' => 'required|numeric'
@@ -23,7 +22,11 @@ class UserController extends Controller
             'phone' => $request->phone
         ]);
 
-        // $result = htmlentities($response);
+        $result = htmlentities($response);
+
+        if($result == 'Failed'){
+            return back()->withErrors(['errorEdit' => 'Tidak bisa di Edit']);
+        }
 
         return redirect('/home');
     }
