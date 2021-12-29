@@ -9,7 +9,6 @@ class CommentController extends Controller
 {
     public function insertComment(Request $request)
     {
-
         $validatedData = $request->validate([
             'email' => ['required'],
             'content' => ['required'],
