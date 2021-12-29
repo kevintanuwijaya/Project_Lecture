@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -17,6 +18,8 @@ class MainController extends Controller
     {
 
         $user = null;
+        $transactions = null;
+        $comments = json_decode(Http::get('https://bilocker.000webhostapp.com/BiLocker/GetUserComment.php'));
 
         if (Cookie::get('remember') || Session::get('remember')) {
 
@@ -32,8 +35,6 @@ class MainController extends Controller
                 ]);
             }
 
-            // dd(json_decode($response));
-
             $result = json_decode($response);
 
             $user = new User();
@@ -41,9 +42,15 @@ class MainController extends Controller
             $user->email = $result->UserEmail;
             $user->password = $result->UserPassword;
             $user->balance = $result->UserBalance;
+
+            $transactions = $this->getCurrentTransaction($user->email);
         }
 
-        return view('layouts.home', ['user' => $user]);
+        return view('layouts.home', [
+            'user' => $user,
+            'transactions' => $transactions,
+            'comments' => $comments,
+        ]);
     }
 
     /**
@@ -74,5 +81,18 @@ class MainController extends Controller
         return view('register', [
             'user' => null,
         ]);
+    }
+
+    public function getCurrentTransaction($userEmail)
+    {
+        $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/CurrentTransaction.php', [
+            'email' => $userEmail,
+        ]);
+
+        $result = json_decode($response);
+
+        if ($result) return $result->Transaction;
+
+        return null;
     }
 }
