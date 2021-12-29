@@ -83,6 +83,21 @@ class MainController extends Controller
         ]);
     }
 
+    /**
+     * show edit page
+     */
+    public function editPage()
+    {
+
+        if (Cookie::get('remember') || Session::get('remember')) {
+            return back();
+        }
+
+        return view('editProfile', [
+            'user' => null,
+        ]);
+    }
+
     public function getCurrentTransaction($userEmail)
     {
         $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/CurrentTransaction.php', [

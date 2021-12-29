@@ -31,6 +31,8 @@ Route::get('/register',[MainController::class,'registerPage']);
 
 Route::post('/register',[AuthController::class,'register']);
 
+Route::get('/edit', [MainController::class, 'editPage']);
+
 Route::post('/edit',[UserController::class,'edit']);
 
 Route::post('/comment',[CommentController::class,'insertComment']);
