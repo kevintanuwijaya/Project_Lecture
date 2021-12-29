@@ -79,16 +79,17 @@
                                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                                 <div class="divider-custom-line"></div>
                             </div>
-                            <form action="" method="post">
+                            <form action="/topup" method="post">
+                                @csrf
                                 <div class="form-floating mb-3">
-                                    <input class="form-control" id="voucher" type="text"
+                                    <input class="form-control" name="voucherID" id="voucher" type="text"
                                         placeholder="Enter your voicher code here..." data-sb-validations="required" />
                                     <label for="voucher">Voucher Code</label>
                                     <div class="invalid-feedback" data-sb-feedback="voucher:required">Voucher code is
                                         required.</div>
                                 </div>
-                                <button class="btn btn-primary" type="button" data-bs-dismiss="modal"
-                                    aria-label="Close">
+                                <input type="hidden" name="email" value='{{ Cookie::get('remember') }}'>
+                                <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-plus fa-fw"></i>
                                     Top Up
                                 </button>
