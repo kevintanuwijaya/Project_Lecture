@@ -85,21 +85,6 @@ class MainController extends Controller
         ]);
     }
 
-    /**
-     * show edit page
-     */
-    public function editPage()
-    {
-
-        if (Cookie::get('remember') || Session::get('remember')) {
-            return back();
-        }
-
-        return view('editProfile', [
-            'user' => null,
-        ]);
-    }
-
     public function getCurrentTransaction($userEmail)
     {
         $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/CurrentTransaction.php', [
@@ -126,7 +111,7 @@ class MainController extends Controller
         return null;
     }
 
-    public function editPage()
+    public function editProfilePage()
     {
 
         if (Cookie::get('remember') || Session::get('remember')) {
@@ -157,5 +142,38 @@ class MainController extends Controller
         }
 
         return back();
+    }
+
+    public function editPasswordPage(){
+
+        if (Cookie::get('remember') || Session::get('remember')) {
+            $user = null;
+            $response = null;
+
+            if (Cookie::get('remember')) {
+                $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/GetUser.php', [
+                    'email' => Cookie::get('remember'),
+                ]);
+            } else {
+                $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/GetUser.php', [
+                    'email' => Session::get('remember'),
+                ]);
+            }
+
+            $result = json_decode($response);
+
+            $user = new User();
+            $user->name = $result->UserName;
+            $user->email = $result->UserEmail;
+            $user->password = $result->UserPassword;
+            $user->balance = $result->UserBalance;
+
+            return view('editProfile', [
+                'user' => $user,
+            ]);
+        }
+
+        return back();
+        
     }
 }
