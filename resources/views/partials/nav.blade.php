@@ -12,12 +12,12 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#feature">Features</a></li>
+                            href="/home#feature">Features</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#about">About</a>
+                            href="/home#about">About</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/home#contact">Contact</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1 dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
@@ -28,7 +28,7 @@
                         </ul>
                     </li>
                 </ul>
-            </div> 
+            </div>
         @endif
         @if (!$user)
             <div class="collapse navbar-collapse" id="navbarResponsive">

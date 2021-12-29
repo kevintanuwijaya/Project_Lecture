@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Http;
 
 class CommentController extends Controller
 {
-    //
-    public function insertComment(Request $request){
-
+    public function insertComment(Request $request)
+    {
+        dd($request);
         $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/InsertNewComment.php', [
             'email' => $request->email,
             'content' => $request->body,
@@ -18,10 +18,8 @@ class CommentController extends Controller
 
         $result = htmlentities($response);
 
-        if($result == 'Failed'){
+        if ($result == 'Failed') {
             return back();
-        }else{
-            return redirect(url('/comment'));
         }
     }
 }

@@ -5,6 +5,6 @@
     @include('partials.feature')
     @include('partials.about')
     @include('partials.contact')
-    @include('partials.comment')
+    @include('livewire.comments')
     @include('partials.footer')
 @endsection
