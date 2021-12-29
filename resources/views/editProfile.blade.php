@@ -11,8 +11,8 @@
         <!-- To make this form functional, sign up at-->
         <!-- https://startbootstrap.com/solution/contact-forms-->
         <!-- to get an API token!-->
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/edit" method="POST">
+            @csrf
             <h1>EDIT PROFILE PAGE</h1>
 
             <!-- Name input-->
@@ -21,24 +21,6 @@
                     data-sb-validations="required" />
                 <label for="name">Name</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-            </div>
-
-            <!-- Email address input-->
-            <div class="form-floating mb-3">
-                <input class="form-control" id="email" type="email" placeholder="name@example.com"
-                    data-sb-validations="required,email" />
-                <label for="email">Email address</label>
-                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-            </div>
-
-            <!-- Email address input-->
-            <div class="form-floating mb-3">
-                <input class="form-control" id="confirmEmail" type="email" placeholder="name@example.com"
-                    data-sb-validations="required,email" />
-                <label for="email">Confirm Email address</label>
-                <div class="invalid-feedback" data-sb-feedback="confirmEmail:required">A confirm email is required.</div>
-                <div class="invalid-feedback" data-sb-feedback="email:email">Confirm Email is not the same.</div>
             </div>
 
             <!-- Add Phone number input-->
@@ -50,13 +32,21 @@
                 </div>
             </div>
 
-            <!-- Password input-->
+            <!-- New Password input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="password" type="password" placeholder="password..."
+                <input class="form-control" id="password" type="password" placeholder="password..." name="password" 
                     data-sb-validations="required" />
-                <label for="password">Password</label>
+                <label for="password">New Password</label>
                 <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
-                <div class="invalid-feedback" data-sb-feedback="email:email">Password is wrong.</div>
+            </div>
+
+            <!-- New Password input-->
+            <div class="form-floating mb-3">
+                <input class="form-control" id="confirmed_password" type="password" placeholder="confirm password..." name="confirmed_password"
+                    data-sb-validations="required" />
+                <label for="password">Confirm New Password</label>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_password:required">Password is required.</div>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_password:same:password">Confirm New Password is not the same.</div>
             </div>
 
             
@@ -74,12 +64,16 @@
             <!---->
             <!-- This is what your users will see when there is-->
             <!-- an error submitting the form-->
-            <div class="d-none" id="submitErrorMessage">
-                <div class="text-center text-danger mb-3">Error sending message!</div>
+            <div class="" id="submitErrorMessage">
+                @if ($errors->any())
+                        @foreach ($errors->all() as $err )
+                            <div class="text-center text-danger mb-3">{{ $err }}</div>
+                        @endforeach
+                @endif
             </div>
 
             <!-- Submit Button-->
-            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Save</button>
+            <button class="btn btn-primary btn-xl" id="saveButton" type="submit">Save</button>
         </form>
     </div>
 </div>
