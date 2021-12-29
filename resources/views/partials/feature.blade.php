@@ -88,7 +88,7 @@
                                     <div class="invalid-feedback" data-sb-feedback="voucher:required">Voucher code is
                                         required.</div>
                                 </div>
-                                <input type="hidden" name="email" value='{{ Cookie::get('remember') }}'>
+                                <input type="hidden" name="email" value='{{ $user->email }}'>
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fas fa-plus fa-fw"></i>
                                     Top Up

@@ -9,7 +9,13 @@ class CommentController extends Controller
 {
     public function insertComment(Request $request)
     {
-        dd($request);
+
+        $validatedData = $request->validate([
+            'email' => ['required'],
+            'content' => ['required'],
+            'rating' => ['required'],
+        ]);
+
         $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/InsertNewComment.php', [
             'email' => $request->email,
             'content' => $request->body,
@@ -19,7 +25,9 @@ class CommentController extends Controller
         $result = htmlentities($response);
 
         if ($result == 'Failed') {
-            return back();
+            return back()->withErrors(['commentError' => 'Please try again later.']);
         }
+
+        return back();
     }
 }
