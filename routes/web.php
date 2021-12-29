@@ -19,26 +19,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', [MainController::class,'homePage']);
+Route::get('/', function () {
+    return redirect('/home');
+});
 
-Route::get('/login',[MainController::class,'loginPage']);
+Route::get('/home', [MainController::class, 'homePage']);
 
-Route::post('/login',[AuthController::class,'login']);
+Route::get('/login', [MainController::class, 'loginPage']);
 
-Route::get('/logout',[AuthController::class,'logout']);
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/register',[MainController::class,'registerPage']);
+Route::get('/logout', [AuthController::class, 'logout']);
 
-Route::post('/register',[AuthController::class,'register']);
+Route::get('/register', [MainController::class, 'registerPage']);
+
+Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/edit', [MainController::class, 'editProfilePage']);
 
-Route::post('/edit',[UserController::class,'editProfile']);
+Route::post('/edit', [UserController::class, 'editProfile']);
 
-Route::get('/edit/password',[MainController::class,'editPasswordPage']);
+Route::get('/edit/password', [MainController::class, 'editPasswordPage']);
 
-Route::post('/edit/password',[UserController::class,'editPassword']);
+Route::post('/edit/password', [UserController::class, 'editPassword']);
 
-Route::post('/comment',[CommentController::class,'insertComment']);
+Route::post('/comment', [CommentController::class, 'insertComment']);
 
-Route::post('/topup',[TopupController::class,'insertVoucher']);
+Route::post('/topup', [TopupController::class, 'insertVoucher']);
