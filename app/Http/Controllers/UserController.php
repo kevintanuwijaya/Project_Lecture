@@ -8,18 +8,17 @@ use Illuminate\Support\Facades\Http;
 class UserController extends Controller
 {
     //
-    public function edit(Request $request){
+    public function editProfile(Request $request){
+
         $validator = $request->validate([
             'name' => 'required',
-            'new_password' => 'required',
-            'confirm_new_passowrd' => 'required|same:new_password',
             'phone' => 'required|numeric'
         ]);
 
-        $response = Http::asForm()->post('https://bilocker.000webhostapp.com/Bilocker/EditUser.php', [
+        $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/EditUser.php', [
+            'email' => $request->email,
             'name' => $request->name,
-            'new_password' => $request->password,
-            'phone' => $request->phone
+            'phone' => $request->phone,
         ]);
 
         $result = htmlentities($response);
@@ -28,6 +27,26 @@ class UserController extends Controller
             return back()->withErrors(['errorEdit' => 'Tidak bisa di Edit']);
         }
 
-        return redirect('/home');
+        return redirect('/edit');
+    }
+
+    public function editPassword(Request $request){
+
+        $validator = $request->validate([
+            'password' => 'required|min:8',
+            'confirmed_password' => 'required|same:password'
+        ]);
+
+        $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/EditPassword.php', [
+            'password' => $request->password,
+            'email' => $request->email,
+        ]);
+
+        $result = htmlentities($response);
+
+        if($result == 'Failed'){
+            return back()->withErrors(['errorEdit' => 'Tidak bisa di Edit']);
+        }
+        return redirect(url('/edit'));
     }
 }

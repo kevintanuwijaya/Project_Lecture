@@ -41,6 +41,7 @@ class MainController extends Controller
             $user->name = $result->UserName;
             $user->email = $result->UserEmail;
             $user->password = $result->UserPassword;
+            $user->phone = $result->UserPhone;
             $user->balance = $result->UserBalance;
 
             $transactions = $this->getCurrentTransaction($user->email);
@@ -133,8 +134,7 @@ class MainController extends Controller
             $user = new User();
             $user->name = $result->UserName;
             $user->email = $result->UserEmail;
-            $user->password = $result->UserPassword;
-            $user->balance = $result->UserBalance;
+            $user->phone = $result->UserPhone;
 
             return view('editProfile', [
                 'user' => $user,
@@ -163,17 +163,14 @@ class MainController extends Controller
             $result = json_decode($response);
 
             $user = new User();
-            $user->name = $result->UserName;
             $user->email = $result->UserEmail;
-            $user->password = $result->UserPassword;
-            $user->balance = $result->UserBalance;
 
-            return view('editProfile', [
+            return view('editPassword', [
                 'user' => $user,
             ]);
         }
 
         return back();
-        
+
     }
 }

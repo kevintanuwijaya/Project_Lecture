@@ -11,26 +11,26 @@
         <!-- To make this form functional, sign up at-->
         <!-- https://startbootstrap.com/solution/contact-forms-->
         <!-- to get an API token!-->
-        <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/edit" method="POST">
+        <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="/edit/password" method="POST">
             @csrf
-            <h1>EDIT PROFILE PAGE</h1>
+            <h1>CHANGE PASSWORD PAGE</h1>
 
+            <!-- New Password input-->
             <input type="hidden" name="email" value="{{$user->email}}">
-            <!-- Name input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="name" name="name"  type="text" placeholder="Enter your name..."
-                    data-sb-validations="required" value="@if (old('name')){{old('name')}}@else{{$user->name}}@endif"/>
-                <label for="name">Name</label>
-                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                <input class="form-control" id="password" type="password" placeholder="password..." name="password" 
+                    data-sb-validations="required" value="{{old('password')}}" />
+                <label for="password">New Password</label>
+                <div class="invalid-feedback" data-sb-feedback="password:required">Password is required.</div>
             </div>
 
-            <!-- Add Phone number input-->
+            <!-- New Password input-->
             <div class="form-floating mb-3">
-                <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890"
-                    data-sb-validations="required" value="@if (old('phone')){{old('phone')}}@else{{$user->phone}}@endif"/>
-                <label for="phone">Change Phone number</label>
-                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
-                </div>
+                <input class="form-control" id="confirmed_password" type="password" placeholder="confirm password..." name="confirmed_password"
+                    data-sb-validations="required" value="{{old('confirmed_password')}}"/>
+                <label for="password">Confirm New Password</label>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_password:required">Password is required.</div>
+                <div class="invalid-feedback" data-sb-feedback="confirmed_password:same:password">Confirm New Password is not the same.</div>
             </div>
 
             
@@ -58,7 +58,6 @@
 
             <!-- Submit Button-->
             <button class="btn btn-primary btn-xl" id="saveButton" type="submit">Save</button>
-            <a class="btn btn-link" href="{{url('/edit/password')}}">Change Password</a>
         </form>
     </div>
 </div>
