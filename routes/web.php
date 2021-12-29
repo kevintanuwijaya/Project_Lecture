@@ -3,9 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\TopupController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Http;
 
 
 /*
@@ -31,8 +31,14 @@ Route::get('/register',[MainController::class,'registerPage']);
 
 Route::post('/register',[AuthController::class,'register']);
 
-Route::get('/edit', [MainController::class, 'editPage']);
+Route::get('/edit', [MainController::class, 'editProfilePage']);
 
-Route::post('/edit',[UserController::class,'edit']);
+Route::post('/edit',[UserController::class,'editProfile']);
+
+Route::get('/edit/password',[MainController::class,'editPasswordPage']);
+
+Route::post('/edit/password',[UserController::class,'editPassword']);
 
 Route::post('/comment',[CommentController::class,'insertComment']);
+
+Route::post('/topup',[TopupController::class,'insertVoucher']);
