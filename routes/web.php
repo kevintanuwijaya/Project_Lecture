@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,5 @@ Route::get('/register',[MainController::class,'registerPage']);
 Route::post('/register',[AuthController::class,'register']);
 
 Route::post('/edit',[UserController::class,'edit']);
+
+Route::post('/comment',[CommentController::class,'insertComment']);
