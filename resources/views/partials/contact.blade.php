@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <!-- Social Item 1-->
             <div class="col-md-6 col-lg-4 mb-5"
-                onClick="window.open('http://https://www.instagram.com/bilocker/','_blank');">
+                onClick="window.open('https://www.instagram.com/bilocker/','_blank');">
                 <div class="contact-item mx-auto">
                     <div class="contact-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                         <div class="contact-item-caption-content text-center text-white"><i
