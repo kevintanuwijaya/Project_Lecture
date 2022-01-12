@@ -1,4 +1,4 @@
-<section class="page-section portfolio" id="contact">
+<section class="page-section contact" id="contact">
     <div class="container">
         <!-- Contact Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Social Media</h2>
@@ -12,9 +12,9 @@
             <!-- Social Item 1-->
             <div class="col-md-6 col-lg-4 mb-5"
                 onClick="window.open('http://https://www.instagram.com/bilocker/','_blank');">
-                <div class="portfolio-item mx-auto">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
+                <div class="contact-item mx-auto">
+                    <div class="contact-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="contact-item-caption-content text-center text-white"><i
                                 class="fab fa-instagram fa-3x"></i>
                         </div>
                     </div>
@@ -26,9 +26,9 @@
             <!-- Social Item 2-->
             <div class="col-md-6 col-lg-4 mb-5"
                 onClick="window.open('https://www.facebook.com/profile.php?id=100074776177626','_blank');">
-                <div class="portfolio-item mx-auto">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
+                <div class="contact-item mx-auto">
+                    <div class="contact-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="contact-item-caption-content text-center text-white"><i
                                 class="fab fa-facebook fa-3x"></i>
                         </div>
                     </div>
@@ -40,9 +40,9 @@
             <!-- Social Item 3-->
             <div class="col-md-6 col-lg-4 mb-5"
                 onClick="window.open('https://www.youtube.com/channel/UCW8zDGlCUKbryt90ydrluXw','_blank');">
-                <div class="portfolio-item mx-auto">
-                    <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                        <div class="portfolio-item-caption-content text-center text-white"><i
+                <div class="contact-item mx-auto">
+                    <div class="contact-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                        <div class="contact-item-caption-content text-center text-white"><i
                                 class="fab fa-youtube fa-3x"></i>
                         </div>
                     </div>
