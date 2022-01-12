@@ -17,7 +17,7 @@ class CommentController extends Controller
 
         $response = Http::asForm()->post('https://bilocker.000webhostapp.com/BiLocker/InsertNewComment.php', [
             'email' => $request->email,
-            'content' => $request->body,
+            'content' => $request->content,
             'rating' => $request->rating,
         ]);
 

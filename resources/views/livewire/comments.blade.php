@@ -14,7 +14,7 @@
                     <form action="/comment" method="post">
                         @csrf
                         <div class="card form-floating mb-1">
-                            <textarea class="form-control" name="body" placeholder="Leave a comment here"
+                            <textarea class="form-control" name="content" placeholder="Leave a comment here"
                                 id="floatingTextarea2" style="height: 100px"></textarea>
                             <label for="floatingTextarea2">Comments</label>
                         </div>
